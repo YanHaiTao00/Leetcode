@@ -1,0 +1,26 @@
+class Solution {
+public:
+    Node* insert(Node* head, int insertVal) {
+        if(head==NULL){
+            Node* p=new Node();
+            p->val=insertVal;
+            p->next=p;
+            head=p;
+        }
+        else{
+            Node* h=head;
+            while(true){
+                if(h->val<=insertVal&&h->next->val>=insertVal) break;
+                else if(h->val>h->next->val&&(insertVal>=h->val||insertVal<=h->next->val)) break;
+                else if(h->next==head) break;
+                h=h->next;
+            }
+            Node* p=new Node();
+            p->val=insertVal;
+            p->next=h->next;
+            h->next=p;
+            return head;
+        }
+        return head;
+    }
+};
